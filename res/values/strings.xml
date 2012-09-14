@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ZabbasActivity</string>
+
+    <string name="app_name">Zabbas</string>
+    <string name="title_host_detail">Host Detail</string>
+    <string name="title_host_list">Hosts</string>
+
 </resources>
