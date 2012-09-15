@@ -2,7 +2,5 @@
 <resources>
 
     <string name="app_name">Zabbas</string>
-    <string name="title_host_detail">Host Detail</string>
-    <string name="title_host_list">Hosts</string>
 
 </resources>
