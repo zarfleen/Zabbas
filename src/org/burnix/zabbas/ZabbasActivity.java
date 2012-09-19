@@ -26,28 +26,6 @@ public class ZabbasActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zabbas);
-
-		final ActionBar actionBar = getActionBar();
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME);
-
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-		//actionBar.setDisplayShowTitleEnabled(false);
-
-		actionBar.setListNavigationCallbacks(new ArrayAdapter<String>(this,
-			android.R.layout.simple_spinner_dropdown_item,
-			new String[] { "Host1", "Host2", "Host3" }),
-
-			new OnNavigationListener() {
-				@Override
-				public boolean onNavigationItemSelected(int position, long itemId)
-				{
-					getFragmentManager()
-						.beginTransaction()
-						.replace(R.id.hosts, new HostFragment(), "host X")
-						.commit();
-					return true;
-				}
-			});
     }
 
 	@Override
