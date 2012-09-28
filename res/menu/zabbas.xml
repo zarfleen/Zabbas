@@ -4,14 +4,21 @@
 	<item
 		android:id="@+id/menu_refresh"
 		android:icon="@drawable/ic_menu_refresh"
-		android:title="Refresh"
+		android:title="@string/refresh"
 		android:showAsAction="ifRoom"
 	/>
 	
 	<item
 		android:id="@+id/menu_add"
 		android:icon="@drawable/ic_menu_add"
-		android:title="Add"
+		android:title="@string/add"
+		android:showAsAction="ifRoom"
+	/>
+
+	<item
+		android:id="@+id/menu_settings"
+		android:icon="@drawable/ic_menu_settings_holo_light"
+		android:title="@string/settings"
 		android:showAsAction="ifRoom"
 	/>
 

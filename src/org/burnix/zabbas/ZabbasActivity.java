@@ -5,7 +5,11 @@ import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ListFragment;
+import android.app.LoaderManager;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +21,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.burnix.zabbas.content.HostSlotsCursorAdapter;
+import org.burnix.zabbas.content.Slot;
+import org.burnix.zabbas.manager.UpdateSlotsTask;
+import org.burnix.zabbas.ui.HostSettingsActivity;
 
 public class ZabbasActivity extends Activity
 {
@@ -34,6 +46,29 @@ public class ZabbasActivity extends Activity
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.zabbas, menu);
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		switch(item.getItemId())
+		{
+		case R.id.menu_refresh:
+			refreshAllHosts();
+			break;
+		case R.id.menu_settings:
+			Intent intent = new Intent();
+			intent.setClass(this, HostSettingsActivity.class);
+			startActivity(intent);
+			break;
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	protected void refreshAllHosts()
+	{
+		new UpdateSlotsTask().execute(this);
 	}
 
 	public static class SlotDetailsActivity extends Activity
@@ -72,30 +107,25 @@ public class ZabbasActivity extends Activity
 	}
 
 	public static class HostFragment extends ListFragment 
+			implements LoaderManager.LoaderCallbacks<Cursor>
 	{
-		private int mCurrentIndex = -1;
+		HostSlotsCursorAdapter mAdapter;
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
 		{
 			super.onActivityCreated(savedInstanceState);
 
-			// populate the list
-			setListAdapter(new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_list_item_activated_1, 
-				new String[] { "Test1", "Test2" }));
+			mAdapter = new HostSlotsCursorAdapter(getActivity(), null);
+			setListAdapter(mAdapter);
 
-			if(savedInstanceState != null)
-			{
-				mCurrentIndex = savedInstanceState.getInt("currentIndex", -1);
-			}
+			getLoaderManager().initLoader(0, null, this);
 		}
 
 		@Override
 		public void onSaveInstanceState(Bundle outState)
 		{
 			super.onSaveInstanceState(outState);
-			outState.putInt("currentIndex", mCurrentIndex);
 		}
 
 		@Override
@@ -106,12 +136,26 @@ public class ZabbasActivity extends Activity
 
 		private void showDetails(int index)
 		{
-			mCurrentIndex = index;
-
 			Intent intent = new Intent();
 			intent.setClass(getActivity(), SlotDetailsActivity.class);
 			intent.putExtra("index", index);
 			startActivity(intent);
+		}
+
+		public Loader<Cursor> onCreateLoader(int id, Bundle args)
+		{
+			return new CursorLoader(getActivity(),
+				Slot.CONTENT_URI, new String[] { Slot._ID, Slot.DATA }, null, null, null);
+		}
+
+		public void onLoadFinished(Loader<Cursor> loader, Cursor data)
+		{
+			mAdapter.swapCursor(data);
+		}
+
+		public void onLoaderReset(Loader<Cursor> loader)
+		{
+			mAdapter.swapCursor(null);
 		}
 	}
 

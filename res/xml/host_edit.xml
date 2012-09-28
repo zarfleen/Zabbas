@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="@string/host_category_host">
+		<EditTextPreference 
+			android:key="@string/host_key_url"
+			android:title="@string/host_title_url"
+		/>
+		<EditTextPreference 
+			android:key="@string/host_key_api_key"
+			android:title="@string/host_title_api_key"
+		/>
+		<EditTextPreference 
+			android:key="@string/host_key_timeout"
+			android:title="@string/host_title_timeout"
+			android:numeric="integer"
+		/>
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/host_category_update">
+		<ListPreference 
+			android:key="@string/host_key_refresh_interval"
+			android:title="@string/host_title_refresh_interval"
+			android:entries="@array/host_refresh_interval_entries"
+			android:entryValues="@array/host_refresh_interval_values"
+			android:dialogTitle="@string/host_title_refresh_interval"
+		/>
+		<ListPreference 
+			android:key="@string/host_key_background_refresh_interval"
+			android:title="@string/host_title_background_refresh_interval"
+			android:entries="@array/host_refresh_interval_entries"
+			android:entryValues="@array/host_refresh_interval_values"
+			android:dialogTitle="@string/host_title_background_refresh_interval"
+		/>
+	</PreferenceCategory>
+</PreferenceScreen>

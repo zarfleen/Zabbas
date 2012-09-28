@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    >
+	
+	<TextView android:id="@+id/filename"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:paddingBottom="3dp"
+		android:textSize="14sp"
+		android:textColor="#FFFFFF"
+		android:singleLine="true"
+	/>
+	
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingBottom="3dp"
+		>
+		
+		<ProgressBar android:id="@+id/progress"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:minHeight="30dp"
+			android:maxHeight="30dp"
+			android:gravity="center_vertical"
+			android:indeterminateOnly="false"
+			style="?android:attr/progressBarStyleHorizontal"
+		/>
+		
+		<LinearLayout android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center"
+			android:paddingLeft="3dp"
+			android:paddingRight="3dp"
+			>
+
+			<TextView android:id="@+id/bytesleft"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="10sp"
+				android:textColor="#FFFFFF"
+			/>
+
+			<TextView android:id="@+id/timeleft"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="10sp"
+				android:textColor="#FFFFFF"
+			/>
+			
+		</LinearLayout>
+			
+	</LinearLayout>
+	
+</LinearLayout>
+

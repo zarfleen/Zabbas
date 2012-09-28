@@ -2,5 +2,42 @@
 <resources>
 
     <string name="app_name">Zabbas</string>
+	<string name="unknown_uri">Unknown uri</string>
+	
+	<string name="cancel">Cancel</string>
+	<string name="ok">OK</string>
+	<string name="add">Add</string>
+	<string name="refresh">Refresh</string>
+	<string name="settings">Settings</string>
+
+	<string name="menu_title_add_host">Add Host</string>
+	<string name="menu_title_delete_host">Delete Host</string>
+	<string name="menu_title_hosts">Hosts</string>
+	<string name="menu_title_refresh">Refresh</string>
+
+	<string name="title_new_host">New Host</string>
+	<string name="summary_new_host">Enter a name to identify the new host</string>
+
+	<string name="host_key_name">name</string>
+	<string name="host_key_url">url</string>
+	<string name="host_key_api_key">api_key</string>
+	<string name="host_key_timeout">timeout</string>
+	<string name="host_key_refresh_interval">refresh_interval</string>
+	<string name="host_key_background_refresh_interval">background_refresh_interval</string>
+	<string name="host_key_enabled">enabled</string>
+
+	<string name="host_category_host">Host Settings</string>
+	<string name="host_category_update">Update Settings</string>
+ 
+	<string name="host_title_name">Name</string>
+	<string name="host_title_url">Host URL</string>
+	<string name="host_title_api_key">API Key</string>
+	<string name="host_title_timeout">Timeout</string>
+	<string name="host_title_refresh_interval">Refresh Interval</string>
+	<string name="host_title_background_refresh_interval">Background Interval</string>
+	<string name="host_title_enabled">Enabled</string>
+
+	<string name="hosts_no_hosts">No Hosts</string>
+	<string name="zabbas_no_activity">No Activity</string>
 
 </resources>
