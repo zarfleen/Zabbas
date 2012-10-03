@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import org.burnix.zabbas.R;
 
+import org.json.JSONObject;
+import org.json.JSONException;
+
 public class HostSlotsCursorAdapter extends CursorAdapter
 {
 	private final LayoutInflater mInflater;
@@ -31,9 +34,21 @@ public class HostSlotsCursorAdapter extends CursorAdapter
 
 		ProgressBar progress = (ProgressBar)view.findViewById(R.id.progress);
 
-		fileName.setText("filename");
-		bytesLeft.setText("bytesleft");
-		timeLeft.setText("timeleft");
+		try
+		{
+			JSONObject slot = new JSONObject(cursor.getString(
+						cursor.getColumnIndex(Slot.DATA)));
+
+			fileName.setText(slot.getString("filename"));
+			bytesLeft.setText(slot.getString("sizeleft"));
+			timeLeft.setText(slot.getString("timeleft"));
+
+			progress.setProgress(slot.getInt("percentage"));
+		}
+		catch(JSONException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Override

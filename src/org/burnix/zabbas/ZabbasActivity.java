@@ -32,7 +32,6 @@ import org.burnix.zabbas.ui.HostSettingsActivity;
 
 public class ZabbasActivity extends Activity
 {
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -145,7 +144,8 @@ public class ZabbasActivity extends Activity
 		public Loader<Cursor> onCreateLoader(int id, Bundle args)
 		{
 			return new CursorLoader(getActivity(),
-				Slot.CONTENT_URI, new String[] { Slot._ID, Slot.DATA }, null, null, null);
+				Slot.CONTENT_URI, new String[] { Slot._ID, Slot.DATA }, 
+				null, null, null);
 		}
 
 		public void onLoadFinished(Loader<Cursor> loader, Cursor data)

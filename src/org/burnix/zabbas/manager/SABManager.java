@@ -28,22 +28,23 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.HttpVersion;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.client.HttpClient;
+
 import java.security.KeyStoreException;
 import javax.net.ssl.SSLContext;
 import java.security.UnrecoverableKeyException;
 import java.net.UnknownHostException;
 import java.net.Socket;
 import javax.net.ssl.TrustManager;
-import org.apache.http.HttpVersion;
-import org.apache.http.conn.scheme.SchemeRegistry;
 import java.security.KeyStore;
 import java.security.NoSuchAlgorithmException;
 import javax.net.ssl.X509TrustManager;
 import java.security.KeyManagementException;
 import java.security.cert.X509Certificate;
 import java.security.cert.CertificateException;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.client.HttpClient;
 
 public class SABManager
 {
@@ -107,8 +108,6 @@ public class SABManager
 	{
 		try
 		{
-			Log.d(this.getClass().toString(), "URL=" + url);
-
 			HttpGet request = new HttpGet(url);
 			HttpResponse response = mHttpClient.execute(request);
 		

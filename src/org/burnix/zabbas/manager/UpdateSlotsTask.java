@@ -56,6 +56,9 @@ public class UpdateSlotsTask extends AsyncTask<Context, Void, Void>
 
 					ContentResolver resolver = contexts[0].getContentResolver();
 
+					resolver.delete(Slot.CONTENT_URI, Slot.HOST_ID + "=-1", 
+							null);
+
 					for(int s = 0;s < slots.length();s++)
 					{
 						String slotData = slots.getJSONObject(s)
