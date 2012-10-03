@@ -4,21 +4,26 @@
 		<EditTextPreference 
 			android:key="@string/host_key_url"
 			android:title="@string/host_title_url"
+			android:summary="@string/host_summary_url"
 		/>
 		<EditTextPreference 
 			android:key="@string/host_key_api_key"
 			android:title="@string/host_title_api_key"
+			android:summary="@string/host_summary_api_key"
 		/>
 		<EditTextPreference 
 			android:key="@string/host_key_timeout"
 			android:title="@string/host_title_timeout"
+			android:summary="@string/host_summary_timeout"
 			android:numeric="integer"
+			android:defaultValue="30"
 		/>
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/host_category_update">
 		<ListPreference 
 			android:key="@string/host_key_refresh_interval"
 			android:title="@string/host_title_refresh_interval"
+			android:summary="@string/host_summary_refresh_interval"
 			android:entries="@array/host_refresh_interval_entries"
 			android:entryValues="@array/host_refresh_interval_values"
 			android:dialogTitle="@string/host_title_refresh_interval"
@@ -26,6 +31,7 @@
 		<ListPreference 
 			android:key="@string/host_key_background_refresh_interval"
 			android:title="@string/host_title_background_refresh_interval"
+			android:summary="@string/host_summary_background_refresh_interval"
 			android:entries="@array/host_refresh_interval_entries"
 			android:entryValues="@array/host_refresh_interval_values"
 			android:dialogTitle="@string/host_title_background_refresh_interval"

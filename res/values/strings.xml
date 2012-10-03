@@ -37,6 +37,14 @@
 	<string name="host_title_background_refresh_interval">Background Interval</string>
 	<string name="host_title_enabled">Enabled</string>
 
+	<string name="host_summary_name">Name describing this host</string>
+	<string name="host_summary_url">URL to access transfer data</string>
+	<string name="host_summary_api_key">API key used to access the host</string>
+	<string name="host_summary_timeout">Connection timeout</string>
+	<string name="host_summary_refresh_interval">Refresh interval while the application is active</string>
+	<string name="host_summary_background_refresh_interval">Refresh interval while in the background</string>
+	<string name="host_summary_enabled">Enabled</string>
+
 	<string name="hosts_no_hosts">No Hosts</string>
 	<string name="zabbas_no_activity">No Activity</string>
 
