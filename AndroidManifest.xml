@@ -31,6 +31,25 @@
 			android:name=".ui.HostSettingsActivity"
 			/>
 
+		<activity
+			android:name=".ui.AddNzbActivity" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data 
+					android:scheme="http"
+					android:host="nzbmatrix.com"
+					android:pathPrefix="/nzb-download.php"
+					/>
+				<data
+					android:scheme="http"
+					android:host="www.nzbmatrix.com"
+					android:pathPrefix="/nzb-download.php"
+					/>
+			</intent-filter>
+		</activity>
+
 		<provider
 			android:name=".content.ZabbasProvider"
 			android:authorities="org.burnix.zabbas.content"

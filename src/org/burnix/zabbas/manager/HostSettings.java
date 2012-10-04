@@ -54,4 +54,16 @@ public class HostSettings
 		editor.putLong(PREFIX + Host.LAST_REFRESH, time);
 		editor.commit();
 	}
+
+	public void setCachedData(String data)
+	{
+		SharedPreferences.Editor editor = mPreferences.edit();
+		editor.putString(PREFIX + Host.DATA, data);
+		editor.commit();
+	}
+
+	public String getCachedData()
+	{
+		return mPreferences.getString(PREFIX + Host.DATA, "");
+	}
 }

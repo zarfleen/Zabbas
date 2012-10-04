@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import org.apache.http.client.methods.HttpGet;
@@ -32,6 +33,8 @@ import org.apache.http.HttpVersion;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.client.HttpClient;
+
+import org.json.JSONObject;
 
 import java.security.KeyStoreException;
 import javax.net.ssl.SSLContext;
@@ -54,7 +57,7 @@ public class SABManager
 	
 	private static final String URL_APPEND = "api?mode=" 
 		+ PARAM_MODE + "&output=json&apikey=" + PARAM_API_KEY
-		+ PARAM_EXTRA + "${EXTRA}";
+		+ PARAM_EXTRA;
 			
 	private HttpClient mHttpClient;
 	private Context mContext;
@@ -103,11 +106,41 @@ public class SABManager
 		
 		return data;
 	}
+
+	public boolean addByUrl(String nzb)
+	{
+		boolean success = false;
+
+		try
+		{
+			String mode = "addurl";
+			String extra = "&name=" + URLEncoder.encode(nzb, "UTF-8");
+
+			String url = mBaseUrl.replace(PARAM_MODE, mode)
+				.replace(PARAM_EXTRA, extra);
+
+			String data = makeRequest(url);
+
+			success = new JSONObject(data).getBoolean("status");
+		}
+		catch(SABException e)
+		{
+			Log.e(this.getClass().toString(), e.getMessage());
+		}
+		catch(Throwable e)
+		{
+			Log.e(this.getClass().toString(), e.getMessage());
+		}
+
+		return success;
+	}
 	
 	private String makeRequest(String url) throws SABException
 	{
 		try
 		{
+			Log.d(this.getClass().toString(), url);
+
 			HttpGet request = new HttpGet(url);
 			HttpResponse response = mHttpClient.execute(request);
 		
